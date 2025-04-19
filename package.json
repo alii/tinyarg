@@ -1,34 +1,18 @@
 {
 	"name": "tinyarg",
 	"version": "1.0.0",
-	"description": "Dead simple CLI argument parser",
-	"repository": {
-		"type": "git",
-		"url": "git+ssh://git@github.com/alii/tinyarg.git"
-	},
-	"homepage": "https://github.com/alii/tinyarg#readme",
-	"bugs": {
-		"url": "https://github.com/alii/tinyarg/issues"
-	},
-	"funding": {
-		"type": "github",
-		"url": "https://github.com/sponsors/alii"
-	},
-	"keywords": [
-		"cli",
-		"argument",
-		"parser",
-		"tiny"
-	],
 	"author": {
 		"name": "Alistair Smith",
 		"email": "hi@alistair.sh"
 	},
-	"license": "MIT",
-	"type": "module",
-	"scripts": {
-		"build": "bun tsup",
-		"release": "bun run build && bun publish"
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/alii/tinyarg.git"
+	},
+	"dependencies": {
+		"prettier": "^3.5.3",
+		"tsup": "^8.4.0",
+		"typescript": "^5.8.3"
 	},
 	"exports": {
 		"./package.json": "./package.json",
@@ -37,14 +21,33 @@
 			"require": "./dist/index.cjs"
 		}
 	},
+	"bugs": {
+		"url": "https://github.com/alii/tinyarg/issues"
+	},
+	"description": "Dead simple CLI argument parser",
 	"files": [
 		"LICENSE",
 		"README.md",
 		"dist"
 	],
-	"dependencies": {
-		"prettier": "^3.5.3",
-		"tsup": "^8.4.0",
-		"typescript": "^5.8.3"
+	"funding": {
+		"type": "github",
+		"url": "https://github.com/sponsors/alii"
+	},
+	"homepage": "https://github.com/alii/tinyarg#readme",
+	"keywords": [
+		"cli",
+		"argument",
+		"parser",
+		"tiny"
+	],
+	"license": "MIT",
+	"scripts": {
+		"build": "bun tsup",
+		"release": "bun run build && bun publish"
+	},
+	"type": "module",
+	"devDependencies": {
+		"@types/bun": "^1.2.10"
 	}
 }

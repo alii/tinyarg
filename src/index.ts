@@ -23,15 +23,39 @@ export function parse(
 	const flags: Record<string, string | boolean> = {};
 	const args: string[] = [];
 
-	for (const arg of argv) {
+	for (let i = 0; i < argv.length; i++) {
+		const arg = argv[i];
+
 		if (arg.startsWith('--')) {
 			const [key, value] = arg.slice(2).split('=');
 			if (!key) continue;
-			flags[key] = value ?? true;
+
+			if (value !== undefined) {
+				flags[key] = value;
+			} else {
+				const nextArg = argv[i + 1];
+				if (nextArg && !nextArg.startsWith('-')) {
+					flags[key] = nextArg;
+					i++; // Skip the next argument since it's the value
+				} else {
+					flags[key] = true;
+				}
+			}
 		} else if (arg.startsWith('-')) {
 			const [key, value] = arg.slice(1).split('=');
 			if (!key) continue;
-			flags[key] = value ?? true;
+
+			if (value !== undefined) {
+				flags[key] = value;
+			} else {
+				const nextArg = argv[i + 1];
+				if (nextArg && !nextArg.startsWith('-')) {
+					flags[key] = nextArg;
+					i++; // Skip the next argument since it's the value
+				} else {
+					flags[key] = true;
+				}
+			}
 		} else {
 			args.push(arg);
 		}
