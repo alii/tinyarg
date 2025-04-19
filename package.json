@@ -10,6 +10,10 @@
 	"bugs": {
 		"url": "https://github.com/alii/tinyarg/issues"
 	},
+	"funding": {
+		"type": "github",
+		"url": "https://github.com/sponsors/alii"
+	},
 	"keywords": [
 		"cli",
 		"argument",
