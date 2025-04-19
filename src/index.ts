@@ -1,9 +1,3 @@
-declare const process: {
-	env: {
-		argv: string[];
-	};
-};
-
 /**
  * Dead simple CLI argument parser
  *
@@ -18,7 +12,7 @@ declare const process: {
  * ```
  */
 export function parse(
-	argv: string[] = process.env.argv.slice(2),
+	argv: string[] = process.argv.slice(2),
 ): [flags: Record<string, string | boolean>, args: string[]] {
 	const flags: Record<string, string | boolean> = {};
 	const args: string[] = [];
