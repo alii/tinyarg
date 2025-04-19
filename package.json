@@ -1,0 +1,38 @@
+{
+	"name": "tinyarg",
+	"version": "0.0.1",
+	"description": "Dead simple CLI argument parser",
+	"keywords": [
+		"cli",
+		"argument",
+		"parser",
+		"tiny"
+	],
+	"author": {
+		"name": "Alistair Smith",
+		"email": "hi@alistair.sh"
+	},
+	"license": "MIT",
+	"type": "module",
+	"scripts": {
+		"build": "bun tsup",
+		"release": "bun run build && bun publish"
+	},
+	"exports": {
+		"./package.json": "./package.json",
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"files": [
+		"LICENSE",
+		"README.md",
+		"dist"
+	],
+	"dependencies": {
+		"prettier": "^3.5.3",
+		"tsup": "^8.4.0",
+		"typescript": "^5.8.3"
+	}
+}
