@@ -26,37 +26,33 @@ export function parse(
 	for (let i = 0; i < argv.length; i++) {
 		const arg = argv[i];
 
-		if (arg.startsWith('--')) {
-			const [key, value] = arg.slice(2).split('=');
-			if (!key) continue;
+		if (arg.startsWith('-')) {
+			const isLongFlag = arg.startsWith('--');
+			const sliceIndex = isLongFlag ? 2 : 1;
+			const [key, value] = arg.slice(sliceIndex).split('=');
 
-			if (value !== undefined) {
-				flags[key] = value;
-			} else {
-				const nextArg = argv[i + 1];
-				if (nextArg && !nextArg.startsWith('-')) {
-					flags[key] = nextArg;
-					i++; // Skip the next argument since it's the value
-				} else {
-					flags[key] = true;
-				}
+			if (!key) {
+				// Ignore '-' or '--' without a key
+				continue;
 			}
-		} else if (arg.startsWith('-')) {
-			const [key, value] = arg.slice(1).split('=');
-			if (!key) continue;
 
 			if (value !== undefined) {
+				// Handle case like --key=value or -k=value
 				flags[key] = value;
 			} else {
+				// Handle case like --key value or -k value or --boolean-flag or -b
 				const nextArg = argv[i + 1];
 				if (nextArg && !nextArg.startsWith('-')) {
+					// Next arg exists and is not a flag, treat it as value
 					flags[key] = nextArg;
-					i++; // Skip the next argument since it's the value
+					i++; // Consume the next argument as it's the value
 				} else {
+					// No value provided (or next arg is another flag), treat as boolean
 					flags[key] = true;
 				}
 			}
 		} else {
+			// Not a flag, treat as positional argument
 			args.push(arg);
 		}
 	}
