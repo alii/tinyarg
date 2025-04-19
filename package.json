@@ -2,6 +2,14 @@
 	"name": "tinyarg",
 	"version": "1.0.0",
 	"description": "Dead simple CLI argument parser",
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/alii/tinyarg.git"
+	},
+	"homepage": "https://github.com/alii/tinyarg#readme",
+	"bugs": {
+		"url": "https://github.com/alii/tinyarg/issues"
+	},
 	"keywords": [
 		"cli",
 		"argument",
