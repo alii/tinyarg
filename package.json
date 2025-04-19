@@ -1,6 +1,6 @@
 {
 	"name": "tinyarg",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"description": "Dead simple CLI argument parser",
 	"keywords": [
 		"cli",
